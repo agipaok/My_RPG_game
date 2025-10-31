@@ -49,8 +49,8 @@ while Turns <=5:
         if player_damage > 50:
             player.counter_damage(random.randint(0,100))
         Turns += 1
-        if player.health <= 0 or enemy.health <= 0:
-            if (player.health and enemy.health) <= 0:
+        if player.is_dead() or enemy.is_dead():
+            if  player.is_dead() and enemy.is_dead():
                 print("MASSACRE NO ONE SURVIVES!")
                 break
             else:
