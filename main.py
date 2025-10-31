@@ -1,5 +1,6 @@
 # Welcome to my first RPG GAME
 import random
+import time
 
 class Player:
     def __init__(self,name,health):
@@ -14,7 +15,7 @@ class Player:
         print(f"Player {self.name} is taking {amount} damage , remaining life: {self.health}")
     
     def show_health(self):
-        print(f"{player.name} has {player.health} HP\n{enemy.name} has {enemy.health} HP")
+        print(f"{self.name} has {self.health} HP")
 
     def counter_damage(self,amount):
         self.health -= amount
@@ -36,7 +37,7 @@ player = Player(player1_name,player1_health)
 
 enemy = Player("Orc",100)
 
-Turns = 1
+Turns = 0
 while Turns <=5:
     print("What you want to do next?: ")
     print("\n1.Attack\n2.Show Healths\n3.End match ")
@@ -44,6 +45,11 @@ while Turns <=5:
 
     if choice == "1":
         player.attack(enemy)
+        print("Attacking", end="", flush=True)
+        for i in range(3):
+            time.sleep(0.5)
+            print(".", end="", flush=True)
+        print()
         player_damage = random.randint(0,100)
         enemy.damage(player_damage)
         if player_damage > 50:
@@ -56,6 +62,7 @@ while Turns <=5:
             else:
                 if player.health > enemy.health:
                     print(f"{player.name} WINS !!!")
+                    break
                 elif enemy.health > player.health:
                     print(f"{enemy.name} WINS !!!")
                     break
@@ -78,7 +85,7 @@ while Turns <=5:
 
 if Turns == 5:
     print("GAME OVER")
-    if (player.health and enemy.health) <= 0:
+    if player.health <=0 and enemy.health <= 0:
         print("MASSACRE NO ONE SURVIVES!")
     else:
         if player.health > enemy.health:
