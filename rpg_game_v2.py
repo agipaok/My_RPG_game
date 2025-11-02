@@ -2,6 +2,40 @@
 import random
 import time
 
+
+enemies = [
+    ("Goblin", 70),
+    ("Orc", 90),
+    ("Undead Mage", 50),
+    ("Undead Warrior", 120),
+    ("Skeleton Archer", 80),
+    ("Dark Knight", 150),
+    ("Vampire", 130),
+    ("Werewolf", 160),
+    ("Necromancer", 100),
+    ("Demon Imp", 60),
+    ("Shadow Assassin", 110),
+    ("Fire Elemental", 140),
+    ("Ice Golem", 180),
+    ("Bandit", 75),
+    ("Troll", 200),
+    ("Stone Guardian", 250),
+    ("Fallen Paladin", 170),
+    ("Ghost", 60),
+    ("Zombie", 85),
+    ("Wraith", 120),
+    ("Lich King", 300),
+    ("Corrupted Elf", 95),
+    ("Blood Sorcerer", 150),
+    ("Poison Serpent", 100),
+    ("Hellhound", 130),
+    ("Minotaur", 220),
+    ("Forest Spirit", 80),
+    ("Sand Wraith", 115),
+    ("Dragon Hatchling", 180),
+    ("Ancient Dragon", 400)
+]
+
 class Player:
     def __init__(self,name):
         self.name = name
@@ -35,7 +69,7 @@ class Warrior(Player):
         self.armor = 100
 
     def announce_player(self):
-        print(f"Mighty Warrior {self.name} welcome ! You have {self.health}HP and {self.armor}!")
+        print(f"Mighty Warrior {self.name} welcome ! You have {self.health}HP and {self.armor}  armor!")
 
 class Mage(Player):
      def __init__(self, name):
@@ -43,17 +77,43 @@ class Mage(Player):
         self.health = 80
         self.armor = 50
 
+     def announce_player(self):
+        print(f"Powerful Mage {self.name} welcome ! You have {self.health}HP and {self.armor} armor!")
+
+
 class Archer(Player):
      def __init__(self, name):
         super().__init__(name)
         self.health = 100
         self.armor = 80
-         
 
-# print("Welcome to RPG World")
-# print("Create your character")
-# player1_name = str(input("Please give the name: "))
-# player1_health = int(input("Please give the health: "))
+     def announce_player(self):
+        print(f"Sneeky Archer {self.name} welcome ! You have {self.health}HP and {self.armor} armor!")
+
+        
+print("Welcome to Echoes of the Abyss")
+print("Let's create your character")
+print("Select your class")
+
+while True:
+    user_choice = input("1.Warrior\n2.Mage\n3.Archer\n:> ")
+    player1_name = input("Please give the name: ")
+
+    if user_choice == "1":
+        player1 =  Warrior(player1_name)
+        player1.announce_player()
+        break
+    elif user_choice == "2":
+        player1 = Mage(player1_name)
+        player1.announce_player()
+        break
+    elif user_choice == "3":
+        player1 = Archer(player1_name)
+        player1.announce_player()
+        break
+    else:
+        print("Please choose correct the class or you will be burn in hell!!!")
+
 
 
 # player = Player(player1_name,player1_health)
@@ -116,5 +176,4 @@ class Archer(Player):
 #         elif enemy.health > player.health:
 #             print(f"{enemy.name} WINS !!!")
 
-hero = Warrior("Agi")
-hero.show_stats()
+
